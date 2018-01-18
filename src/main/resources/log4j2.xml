@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns:xi="http://www.w3.org/2001/XInclude" status="INFO" DLog4jContextSelector="org.apache.logging.log4j.core.async.AsyncLoggerContextSelector">
+    <Properties>
+        <Property name="jvmName">jim-flume-client</Property>
+    </Properties>
+    <xi:include href="appenders.xml" />
+    <Loggers>
+        <Logger name="org.apache.avro.ipc.NettyTransceiver" level="DEBUG" additivity="false">
+            <AppenderRef ref="APPLICATION-FILE"/>
+        </Logger>
+        <Logger name="org.apache.flume" level="INFO" additivity="false">
+            <AppenderRef ref="APPLICATION-FILE"/>
+        </Logger>
+        <Root level="debug" additivity="false">
+            <AppenderRef ref="APPLICATION-FILE"/>
+            <AppenderRef ref="FLUME-APPLICATION"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,26 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.13'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.10.0'
+    runtime group: 'org.apache.logging.log4j', name: 'log4j-flume-ng', version: '2.10.0'
+    compile group: 'org.apache.flume', name: 'flume-ng-embedded-agent', version: '1.6.0'
+    compile group: 'org.elasticsearch.client', name: 'transport', version: '6.1.1'
+    testCompile 'junit:junit:4.12'
+}
+

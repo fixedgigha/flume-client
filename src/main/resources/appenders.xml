@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Appenders>
+    <Flume name="FLUME-APPLICATION" compress="false" type="avro" >
+        <Agent host="localhost" port="50216"/>
+        <PatternLayout>
+            <Pattern>[%d] ${jvmName} APPLICATION [%X{x-bpi-correlation_id}] [%X{eventID}] %p %C{1} %m%n</Pattern>
+        </PatternLayout>
+    </Flume>
+    <RollingFile name="APPLICATION-FILE" fileName="./logs/application.log" filePattern="./logs/application-%d{yyyy-MM-dd}-%i.log.gz" immediateFlush="true">
+        <PatternLayout>
+            <Pattern>[%d] [%X{x-bpi-correlation_id}] [%X{eventID}] %p %C{1} %m%n</Pattern>
+        </PatternLayout>
+        <Policies>
+            <TimeBasedTriggeringPolicy /><!-- Rotated everyday -->
+        </Policies>
+        <DefaultRolloverStrategy max="64"/>
+    </RollingFile>
+</Appenders>
